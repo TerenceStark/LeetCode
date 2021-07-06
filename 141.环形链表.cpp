@@ -60,7 +60,6 @@ bool hasCycle(ListNode *head)
 	}
 	return false;
 }
-
  */
 
 // @lc code=end

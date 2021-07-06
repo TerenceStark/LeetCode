@@ -13,11 +13,58 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+
+class Solution
+{
 public:
-    ListNode *detectCycle(ListNode *head) {
-        
+    ListNode *detectCycle(ListNode *head)
+    {
+        if (!head)
+        {
+            return nullptr;
+        }
+        ListNode *slow = head;
+        ListNode *fast = head;
+        while (fast && fast->next)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast)
+            {
+                while (true)
+                {
+                    if (head == slow)
+                    {
+                        return head;
+                    }
+                    head = head->next;
+                    slow = slow->next;
+                }
+            }
+        }
+        return nullptr;
     }
 };
-// @lc code=end
 
+/* 垃圾的哈希表
+class Solution
+{
+public:
+    ListNode *detectCycle(ListNode *head)
+    {
+        unordered_set<ListNode *> marked;
+        while (head)
+        {
+            if (marked.count(head))
+            {
+                return head;
+            }
+            marked.insert(head);
+            head = head->next;
+        }
+        return nullptr;
+    }
+}; 
+*/
+
+// @lc code=end
