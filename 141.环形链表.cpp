@@ -18,20 +18,49 @@ class Solution
 public:
     bool hasCycle(ListNode *head)
     {
-        if (!head || !head->next)
-            return false;
-        ListNode *slow = head;
-        ListNode *fast = head->next;
-        while (slow != fast)
+        if (!head)
         {
-            if (!fast || !fast->next)
-            {
-                return false;
-            }
+            return false;
+        }
+        ListNode *slow = head;
+        ListNode *fast = head;
+        while (fast && fast->next && fast->next->next)
+        {
             slow = slow->next;
             fast = fast->next->next;
+            if (slow == fast)
+            {
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 };
+
+/* reverse list 
+ListNode* reverseList(ListNode* head) 
+{
+	ListNode* prev = NULL;
+	ListNode* follow = NULL;
+	while (head)
+	{
+		follow = head->next;
+		head->next = prev;
+		prev = head;
+		head = follow;
+	}
+    return prev;
+}
+bool hasCycle(ListNode *head)
+{
+	ListNode* rev = reverseList(head);
+	if (head && head->next && rev == head)
+	{
+		return true;
+	}
+	return false;
+}
+
+ */
+
 // @lc code=end
