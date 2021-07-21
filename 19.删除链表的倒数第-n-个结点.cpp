@@ -34,6 +34,7 @@ public:
         ListNode *dummy = new ListNode(0, head);
         int length = getLength(head);
         ListNode *cur = dummy;
+        
         for (int i = 0; i < length - n; i++)
         {
             cur = cur->next;
