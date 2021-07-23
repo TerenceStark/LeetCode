@@ -26,7 +26,7 @@ public:
     void pop()
     {
         normal_stack.pop();
-        min_stack.pop();
+        min_stack.pop();    
     }
 
     int top()
