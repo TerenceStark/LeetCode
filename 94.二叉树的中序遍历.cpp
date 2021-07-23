@@ -16,6 +16,18 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+class Solution
+{
+public:
+    vector<int> inorderTraversal(TreeNode *root)
+    {
+                
+    }
+};
+
+/* 
+using recursion
 class Solution
 {
 public:
@@ -23,18 +35,21 @@ public:
     {
         vector<int> ans;
         inorder(root, ans);
+        return ans;
     }
 
-    void inorder(TreeNode *Tnode, vector<int> ans)
+    void inorder(TreeNode *Tnode, vector<int> &ans)
     {
         if (!Tnode)
         {
             return;
         }
-
         inorder(Tnode->left, ans);
         ans.push_back(Tnode->val);
-        inorder(Tnode->right);
+        inorder(Tnode->right, ans);
     }
-};
+}; 
+*/
+
+
 // @lc code=end
