@@ -39,6 +39,7 @@ public:
         rightNode->next = nullptr;
 
         reverseList(leftNode);
+        
         pre->next = rightNode;
         leftNode->next = suc;
         return dummy->next;
