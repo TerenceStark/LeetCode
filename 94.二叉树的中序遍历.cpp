@@ -17,7 +17,51 @@
  * };
  */
 
-//using iteration
+//morris
+class Solution
+{
+public:
+    vector<int> inorderTraversal(TreeNode *root)
+    {
+        vector<int> ans;
+        TreeNode *predecessor;
+
+        while (root)
+        {
+            if (root->left) //root->left!=nullptr
+            {
+                predecessor = root->left;
+                while (predecessor->right && predecessor->right != root)
+                {
+                    predecessor = predecessor->right; //find predecessor
+                }
+
+                if (!predecessor->right) //predecessor->right==nullptr
+                {
+                    predecessor->right = root;
+                    root = root->left;
+                }
+
+                else
+                {
+                    ans.push_back(root->val);
+                    predecessor->right = nullptr;
+                    root = root->right;
+                }
+            }
+
+            else //root->left==nullptr
+            {
+                ans.push_back(root->val);
+                root = root->right;
+            }
+        }
+        return ans;
+    }
+};
+
+/*
+using iteration
 class Solution
 {
 public:
@@ -40,9 +84,9 @@ public:
         }
         return ans;
     }
-};
+}; */
 
-/* 
+/*  
 using recursion
 class Solution
 {
