@@ -16,6 +16,44 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+class Solution
+{
+public:
+    vector<int> postorderTraversal(TreeNode *root)
+    {
+        vector<int> ans;
+        stack<TreeNode *> stack;
+        TreeNode *pre = nullptr;
+
+        while (root || !stack.empty())
+        {
+            while (root)
+            {
+                stack.push(root);
+                root = root->left;
+            }
+
+            root = stack.top();
+            stack.pop();
+            if (!root->right || root->right == pre)
+            {
+                ans.push_back(root->val);
+                pre = root;
+                root = nullptr;
+            }
+            else
+            {
+                stack.push(root);
+                root = root->right;
+            }
+        }
+        return ans;
+    }
+};
+
+/* 
+using recursion:
 class Solution
 {
 public:
@@ -37,5 +75,6 @@ public:
         postorder(Tnode->right, ans);
         ans.push_back(Tnode->val);
     }
-};
+}; 
+*/
 // @lc code=end
