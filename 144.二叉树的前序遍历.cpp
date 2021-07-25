@@ -22,17 +22,6 @@ class Solution
 public:
     vector<int> preorderTraversal(TreeNode *root)
     {
-
-    }
-};
-
-/* 
-using iteration
-class Solution
-{
-public:
-    vector<int> preorderTraversal(TreeNode *root)
-    {
         vector<int> ans;
         stack<TreeNode *> stack;
 
@@ -51,7 +40,7 @@ public:
         return ans;
     }
 }; 
-*/
+
 
 /* 
 using recursion:
