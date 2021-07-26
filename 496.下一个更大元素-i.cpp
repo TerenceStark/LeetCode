@@ -10,30 +10,32 @@ class Solution
 public:
     vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2)
     {
-        vector<int> result;
-        stack<int> temp;
-        int larger_number = -1;
+        unordered_map<int, int> hashmap;
+        stack<int> stack;
+        vector<int> ans;
 
-        for (int i = nums2.size(); i > 0; i--)
+        for (int i = 0; i < nums2.size(); i++)
         {
-            temp.push(nums2[i]);
+            while (!stack.empty() && stack.top() < nums2[i])
+            {
+                hashmap[stack.top()] = nums2[i];
+                stack.pop();
+            }
+            stack.push(nums2[i]);
+        }
+
+        while (!stack.empty())
+        {
+            hashmap[stack.top()] = -1;
+            stack.pop();
         }
 
         for (int i = 0; i < nums1.size(); i++)
         {
-            while (nums1[i] != temp.top() && !temp.empty())
-            {
-                if (temp.top() > nums2[i])
-                {
-                    larger_number = temp.top();
-                }
-                temp.pop();
-            }
-            result[i]=(larger_number);
-            larger_number=-1;
+            ans.push_back(hashmap[nums1[i]]);
         }
 
-        return result;
+        return ans;
     }
 };
 // @lc code=end
