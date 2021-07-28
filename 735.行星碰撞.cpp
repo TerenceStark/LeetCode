@@ -33,7 +33,7 @@ public:
                 }
             }
             if (flag)
-                ans.emplace_back(asteroids[i]);
+                ans.push_back(asteroids[i]);
         }
         return ans;
     }
