@@ -10,25 +10,25 @@ class Solution
 public:
     int longestValidParentheses(string s)
     {
-        stack<int> st;
-        st.push(-1);
+        stack<int> stack;
+        stack.push(-1);
         int maxans = 0;
         for (int i = 0; i < s.size(); i++)
         {
             if (s[i] == '(')
             {
-                st.push(i);
+                stack.push(i);
             }
             else
             {
-                st.pop();
-                if (st.empty())
+                stack.pop();
+                if (stack.empty())
                 {
-                    st.push(i);
+                    stack.push(i);
                 }
                 else
                 {
-                    maxans = max(maxans, i - st.top());
+                    maxans = max(maxans, i - stack.top());
                 }
             }
         }
