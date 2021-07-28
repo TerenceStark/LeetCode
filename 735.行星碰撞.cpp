@@ -28,7 +28,7 @@ public:
                 }
                 else if (-asteroids[i] == ans.back())
                 {
-                    ans.pop_back();
+                    ans.pop_back(); 
                     flag = false;
                 }
             }
