@@ -16,9 +16,42 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//bottom up
+//time O(n)
+//space O(n)
+class Solution
+{
+public:
+    bool isBalanced(TreeNode *root)
+    {
+        return height(root) >= 0;
+    }
+
+    int height(TreeNode *node)
+    {
+        if (!node)
+        {
+            return 0;
+        }
+
+        int leftHeight = height(node->left);
+        int rightHeight = height(node->right);
+        if (leftHeight == -1 || rightHeight == -1 || abs(leftHeight - rightHeight) > 1)
+        {
+            return -1;
+        }
+        else
+        {
+            return max(leftHeight, rightHeight) + 1;
+        }
+    }
+};
+
 /* 
+Top down
 time O(n^2)
-space O(n   )
+space O(n)
 class Solution {
 public:
     int height(TreeNode* root) {
