@@ -16,7 +16,55 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution
+{
+public:
+    bool hasPathSum(TreeNode *root, int targetSum)
+    {
+        if (!root)
+        {
+            return false;
+        }
+
+        queue<TreeNode *> nodeQueue;
+        queue<int> valQueue;
+        nodeQueue.push(root);
+        valQueue.push(root->val);
+
+        while (!nodeQueue.empty())
+        {
+            TreeNode *cur = nodeQueue.front();
+            int temp = valQueue.front();
+            nodeQueue.pop();
+            valQueue.pop();
+            if (!cur->left && !cur->right)
+            {
+                if (temp == targetSum)
+                {
+                    return true;
+                }
+                continue;
+            }
+
+            if (cur->left)
+            {
+                nodeQueue.push(cur->left);
+                valQueue.push(cur->left->val + temp);
+            }
+
+            if (cur->right)
+            {
+                nodeQueue.push(cur->right);
+                valQueue.push(cur->right->val + temp);
+            }
+        }
+
+        return false;
+    }
+};
+
+/* class Solution
 {
 public:
     bool hasPathSum(TreeNode *root, int targetSum)
@@ -34,5 +82,5 @@ public:
         return hasPathSum(root->left, targetSum - root->val) ||
                hasPathSum(root->right, targetSum - root->val);
     }
-};
+}; */
 // @lc code=end
