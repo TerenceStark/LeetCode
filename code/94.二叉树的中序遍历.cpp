@@ -35,13 +35,11 @@ public:
                 {
                     predecessor = predecessor->right; //find predecessor
                 }
-
                 if (!predecessor->right) //predecessor->right==nullptr
                 {
                     predecessor->right = root;
                     root = root->left;
                 }
-
                 else
                 {
                     ans.push_back(root->val);
@@ -49,7 +47,6 @@ public:
                     root = root->right;
                 }
             }
-
             else //root->left==nullptr
             {
                 ans.push_back(root->val);
