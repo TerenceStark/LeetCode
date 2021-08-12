@@ -29,8 +29,8 @@ public:
         {
             while (root)
             {
-                stack.push(root);
                 ans.push_back(root->val);
+                stack.push(root);
                 root = root->left;
             }
             root = stack.top();
@@ -39,8 +39,7 @@ public:
         }
         return ans;
     }
-}; 
-
+};
 
 /* 
 using recursion:
