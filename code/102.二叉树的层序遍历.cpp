@@ -24,7 +24,6 @@ public:
         vector<vector<int>> ans;
         queue<TreeNode *> nodeQueue;
         int size = 0;
-
         if (!root)
         {
             return ans;
