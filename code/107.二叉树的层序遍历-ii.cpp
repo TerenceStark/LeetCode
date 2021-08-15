@@ -16,10 +16,12 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    vector<vector<int>> levelOrderBottom(TreeNode* root) {
- vector<vector<int>> ans;
+    vector<vector<int>> levelOrderBottom(TreeNode *root)
+    {
+        vector<vector<int>> ans;
         queue<TreeNode *> nodeQueue;
         int size = 0;
 
@@ -53,4 +55,3 @@ public:
     }
 };
 // @lc code=end
-
