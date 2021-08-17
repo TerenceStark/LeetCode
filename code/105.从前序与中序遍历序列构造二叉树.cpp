@@ -40,7 +40,6 @@ public:
 
         int pre_root = pre_left;
         int in_root = index[preorder[pre_root]];
-
         TreeNode *root = new TreeNode(preorder[pre_root]);
         int leftSize = in_root - in_left;
 
