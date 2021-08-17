@@ -24,30 +24,30 @@ public:
     vector<int> inorderTraversal(TreeNode *root)
     {
         vector<int> ans;
-        TreeNode *predecessor;
+        TreeNode *pre;
 
         while (root)
         {
-            if (root->left) //root->left!=nullptr
+            if (root->left)
             {
-                predecessor = root->left;
-                while (predecessor->right && predecessor->right != root)
+                pre = root->left;
+                while (pre->right && pre->right != root)
                 {
-                    predecessor = predecessor->right; //find predecessor
+                    pre = pre->right;
                 }
-                if (!predecessor->right) //predecessor->right==nullptr
+                if (!pre->right)
                 {
-                    predecessor->right = root;
+                    pre->right = root;
                     root = root->left;
                 }
-                else
+                else //pre->right!=null;
                 {
                     ans.push_back(root->val);
-                    predecessor->right = nullptr;
                     root = root->right;
+                    pre->right = nullptr;
                 }
             }
-            else //root->left==nullptr
+            else //root->left==null;
             {
                 ans.push_back(root->val);
                 root = root->right;
