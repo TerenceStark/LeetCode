@@ -22,6 +22,48 @@ class Solution
 public:
     vector<int> postorderTraversal(TreeNode *root)
     {
+        vector<int> res;
+
+        while (root)
+        {
+            if (root->right)
+            {
+                TreeNode *pre = root->right;
+                
+                while (pre->left && pre->left != root)
+                {
+                    pre = pre->left;
+                }
+                if (pre->left == nullptr)
+                {
+                    res.push_back(root->val);
+                    pre->left = root;
+                    root = root->right;
+                }
+                else
+                {
+                    pre->left = nullptr;
+                    root = root->left;
+                }
+            }
+            else
+            {
+                res.push_back(root->val);
+                root = root->left;
+            }
+        }
+        reverse(res.begin(), res.end());
+        return res;
+    }
+};
+
+/* 
+itereation
+class Solution
+{
+public:
+    vector<int> postorderTraversal(TreeNode *root)
+    {
         vector<int> ans;
         stack<TreeNode *> stack;
         TreeNode *pre = nullptr;
@@ -36,7 +78,7 @@ public:
 
             root = stack.top();
             stack.pop();
-            if (!root->right || root->right == pre)
+            if (!root->right || root->right == pre) //TreeNode pre used representing right child has been visited
             {
                 ans.push_back(root->val);
                 pre = root;
@@ -50,7 +92,8 @@ public:
         }
         return ans;
     }
-};
+}; 
+*/
 
 /* 
 using recursion:
