@@ -24,6 +24,49 @@ public:
     {
         vector<int> ans;
         stack<TreeNode *> stack;
+        TreeNode *pre = nullptr;
+
+        while (root)
+        {
+            if (root->left)
+            {
+                pre = root->left;
+                while (pre->right && pre->right != root)
+                {
+                    pre = pre->right;
+                }
+                if (!pre->right)
+                {
+                    ans.push_back(root->val);
+                    pre->right = root;
+                    root = root->left;
+                }
+                else //pre->right!=null
+                {
+                    root = root->right;
+                    pre->right = nullptr;
+                }
+            }
+
+            else //root->left==null
+            {
+                ans.push_back(root->val);
+                root=root->right;
+            }
+        }
+        return ans;
+    }
+};
+
+/* 
+iteration
+class Solution
+{
+public:
+    vector<int> preorderTraversal(TreeNode *root)
+    {
+        vector<int> ans;
+        stack<TreeNode *> stack;
 
         while (root || !stack.empty())
         {
@@ -39,7 +82,8 @@ public:
         }
         return ans;
     }
-};
+}; 
+*/
 
 /* 
 using recursion:
