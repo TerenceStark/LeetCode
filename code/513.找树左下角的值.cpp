@@ -24,7 +24,6 @@ public:
 
     int findBottomLeftValue(TreeNode *root)
     {
-
         dfs(root, 1);
         return ans;
     }
@@ -34,7 +33,6 @@ public:
 
         if (!cur->left && !cur->right && height > maxHeight)
         {
-
             maxHeight = height;
             ans = cur->val;
             return;
