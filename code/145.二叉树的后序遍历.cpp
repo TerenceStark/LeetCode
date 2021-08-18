@@ -36,7 +36,7 @@ public:
                 }
                 if (!pre->left)
                 {
-                     ans.push_back(root->val);
+                    ans.push_back(root->val);
                     pre->left = root;
                     root = root->right;
                 }
