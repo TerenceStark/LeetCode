@@ -22,21 +22,21 @@ class Solution
 public:
     vector<int> postorderTraversal(TreeNode *root)
     {
-        vector<int> res;
+        vector<int> ans;
+        TreeNode *pre;
 
         while (root)
         {
             if (root->right)
             {
-                TreeNode *pre = root->right;
-                
+                pre = root->right;
                 while (pre->left && pre->left != root)
                 {
                     pre = pre->left;
                 }
-                if (pre->left == nullptr)
+                if (!pre->left)
                 {
-                    res.push_back(root->val);
+                     ans.push_back(root->val);
                     pre->left = root;
                     root = root->right;
                 }
@@ -46,14 +46,15 @@ public:
                     root = root->left;
                 }
             }
+
             else
             {
-                res.push_back(root->val);
+                ans.push_back(root->val);
                 root = root->left;
             }
         }
-        reverse(res.begin(), res.end());
-        return res;
+        reverse(ans.begin(), ans.end());
+        return ans;
     }
 };
 
