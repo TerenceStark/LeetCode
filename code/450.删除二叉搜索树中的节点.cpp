@@ -54,7 +54,7 @@ public:
             node->left = root->left;
             root = root->right;
         }
-        return root;
+        return root;    
     }
 };
 // @lc code=end
